@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 const desctopSubmenuLink = document.querySelector('.header .submenu-link');
 const desctopSubmenuContainer = document.querySelector('.header .submenu-container');
 
-desctopSubmenuLink.addEventListener('click', (e) => {
+desctopSubmenuLink?.addEventListener('click', (e) => {
     e.stopPropagation();
     desctopSubmenuLink.classList.toggle('active');
     desctopSubmenuContainer.classList.toggle('active');
@@ -38,9 +38,24 @@ document.addEventListener('click', (e) => {
 
     console.log(!e.target.closest('.header .submenu-link'))
     if (!e.target.closest('.header .submenu-link')) {
-        desctopSubmenuLink.classList.remove('active');
-        desctopSubmenuContainer.classList.remove('active');
+        desctopSubmenuLink?.classList.remove('active');
+        desctopSubmenuContainer?.classList.remove('active');
     }
 });
+
+// news years filter
+
+const filterItems = document.querySelectorAll('.year-filter ul li');
+
+filterItems?.forEach(el=> {
+    el.addEventListener('click' , ()=> {
+        filterItems.forEach(elem => {
+            if(elem.classList.contains('active')) {
+                elem.classList.remove('active')
+            }
+        })
+        el.classList.add('active')
+    })
+})
 
 
