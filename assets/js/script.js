@@ -59,3 +59,93 @@ filterItems?.forEach(el=> {
 })
 
 
+// stock items swipers
+
+const stockItemsSwipers = document.querySelectorAll('.stock-item-swiper');
+
+if (stockItemsSwipers) {
+    const swipers = {};
+
+    stockItemsSwipers?.forEach((el , i)=> {
+        const swiperName = `swiper${i}`;
+        const currentPagination = el.closest('.stock-item').querySelector(".swiper-pagination");
+
+        swipers[swiperName] = new Swiper(el, {
+            spaceBetween: 3,
+            slidesPerView: 1,
+            direction: "horizontal",
+            pagination: {
+                el: currentPagination,
+                clickable: true,
+            },
+        });
+    })
+}
+
+// likes
+
+const likes = document.querySelectorAll('.like');
+
+likes?.forEach(el=> {
+    el.addEventListener('click' , () =>{
+        el.classList.toggle('active')
+    })
+})
+
+// counter
+
+
+const minusBtns = document.querySelectorAll('.counter-wrap .minus');
+const plusBtns = document.querySelectorAll('.counter-wrap .plus');
+
+if(minusBtns) {
+    minusBtns.forEach(el=> {
+        el.addEventListener('click' , (e) => {
+            let currCounter = e.target.closest('.counter-wrap').querySelector('.counter');
+            if (currCounter.innerHTML > 0) {
+                currCounter.innerHTML = +currCounter.innerHTML - 1;
+            }
+        })
+    })
+}
+if(plusBtns) {
+    plusBtns.forEach(el=> {
+        el.addEventListener('click' , (e) => {
+            let currCounter = e.target.closest('.counter-wrap').querySelector('.counter');
+            if (currCounter.innerHTML >= 0) {
+                currCounter.innerHTML = +currCounter.innerHTML + 1;
+            }
+        })
+    })
+}
+
+// callback modal
+
+const overlay = document.querySelector('.overlay');
+const callbackModal = document.querySelector('.callback-modal');
+const callbackModalClose = document.querySelector('.callback-modal .close-btn');
+const callBackBtns = document.querySelectorAll('.show-callback-modal-btn')
+
+const showCallbackModal = () => {
+    callBackBtns?.forEach(el=> {
+        el.addEventListener('click' , ()=> {
+            overlay.classList.add('open');
+            callbackModal.classList.add('open');
+        })
+    })
+}
+
+const hideCallbackModal = ()=> {
+    overlay.addEventListener('click' , ()=> {
+        overlay.classList.remove('open');
+        callbackModal.classList.remove('open');
+    })
+    callbackModalClose.addEventListener('click' , ()=> {
+        overlay.classList.remove('open');
+        callbackModal.classList.remove('open');
+    })
+}
+if (callBackBtns && callbackModal) {
+    showCallbackModal();
+    hideCallbackModal()
+}
