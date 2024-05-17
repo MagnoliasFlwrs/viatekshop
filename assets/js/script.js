@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
 const desctopSubmenuLink = document.querySelector('.header .submenu-link');
 const desctopSubmenuContainer = document.querySelector('.header .submenu-container');
 
+desctopSubmenuContainer?.addEventListener('click' , (e)=> {
+    e.stopPropagation();
+})
+
 desctopSubmenuLink?.addEventListener('click', (e) => {
     e.stopPropagation();
     desctopSubmenuLink.classList.toggle('active');
@@ -149,3 +153,98 @@ if (callBackBtns && callbackModal) {
     showCallbackModal();
     hideCallbackModal()
 }
+
+
+// custom select
+
+const customSelects =  document.querySelectorAll('.select');
+
+if (customSelects) {
+    customSelects.forEach(el => {
+        el.addEventListener('click' , (e)=> {
+            let currentSelectWrap = e.target.closest('.select-wrap');
+            let currentSelectBody = currentSelectWrap.querySelector('.select-list');
+            let currentSelectOptions = currentSelectBody.querySelectorAll('li');
+            let currentSelectTitle = el.querySelector('p');
+            let currentImage = el.querySelector('img')
+            currentSelectBody.classList.add('active');
+            currentSelectOptions.forEach(option => {
+                option.addEventListener('click' , ()=> {
+                    if (currentSelectTitle) {
+                        currentSelectTitle.innerHTML = option.textContent;
+                        currentSelectTitle.dataset.current = option.dataset.value;
+                        currentSelectBody.classList.remove('active');
+                    }
+                    if (currentImage) {
+                        currentImage.src = option.querySelector('img').src;
+                        currentImage.dataset.current = option.dataset.value;
+                        currentSelectBody.classList.remove('active');
+                    }
+
+                })
+            })
+        })
+    })
+    document.addEventListener('click', (e)=> {
+        let lists = document.querySelectorAll('.select-list.active')
+        if (!e.target.closest('.select-wrap') && lists){
+            lists.forEach(el=> {
+                el.classList.remove('active');
+            })
+
+        }
+    })
+
+}
+
+const phoneSelect = document.querySelector('.phone-select .header-phones');
+
+if (phoneSelect) {
+    phoneSelect.addEventListener('click' , (e)=> {
+        let currentSelectWrap = e.target.closest('.phone-select');
+        let currentSelectBody = currentSelectWrap.querySelector('.phone-select-wrapper');
+        currentSelectBody.classList.add('active');
+    })
+    document.addEventListener('click', (e)=> {
+        let lists = document.querySelectorAll('.phone-select-wrapper.active')
+        if (!e.target.closest('.phone-select') && lists){
+            lists.forEach(el=> {
+                el.classList.remove('active');
+            })
+
+        }
+    })
+}
+
+// mobile-menu
+
+const burger = document.querySelector('.burger-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+const closeBtns = document.querySelectorAll('.mobile-menu .close-btn');
+const droprightItems = document.querySelectorAll('.mobile-menu .dropright');
+const backBtns = document.querySelectorAll('.mobile-menu .back');
+
+burger?.addEventListener('click' , ()=> {
+    mobileMenu.classList.add('active')
+})
+
+closeBtns?.forEach(el=> {
+    el.addEventListener('click' , ()=> {
+        mobileMenu.classList.remove('active')
+    })
+})
+
+droprightItems?.forEach(el=> {
+    el.addEventListener('click' , (e)=> {
+        e.preventDefault();
+        let currScreen = el.closest('li').querySelector('.screen')
+        currScreen.classList.add('active');
+    })
+})
+backBtns.forEach(el=> {
+    el.addEventListener('click' , (e)=> {
+        e.stopPropagation();
+        let droprightScreen = e.target.closest('.screen');
+        droprightScreen.classList.remove('active');
+    })
+})
