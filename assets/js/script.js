@@ -352,3 +352,44 @@ window.addEventListener('DOMContentLoaded', (event) => {
     }
 
 });
+
+// review-show-more
+
+const reviewShowMoreBtns = document.querySelectorAll('.review-show-more');
+
+reviewShowMoreBtns?.forEach(el=> {
+    el.addEventListener('click' , (e)=>{
+        let currText = e.target.closest('.text').querySelector('p');
+        currText.classList.toggle('active')
+    })
+})
+
+
+const recentlySwiper = document.querySelector('.recently-viewed-swiper');
+
+if (recentlySwiper) {
+    const resswiper = new Swiper(recentlySwiper, {
+        loop: true,
+        spaceBetween:20,
+        slidesPerView: 1,
+        navigation: {
+            nextEl: '.arrow-next',
+            prevEl: '.arrow-prev',
+        },
+        breakpoints: {
+            768: {
+                slidesPerView: 2,
+                spaceBetween: 20
+            },
+            1024: {
+                slidesPerView: 3,
+                spaceBetween: 30
+            },
+            1275: {
+                slidesPerView: 4,
+                spaceBetween: 20
+            }
+        }
+    });
+}
+
