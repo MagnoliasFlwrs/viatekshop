@@ -91,7 +91,9 @@ if (stockItemsSwipers) {
 const likes = document.querySelectorAll('.like');
 
 likes?.forEach(el=> {
-    el.addEventListener('click' , () =>{
+    el.addEventListener('click' , (e) =>{
+        e.stopPropagation();
+        e.preventDefault();
         el.classList.toggle('active')
     })
 })
@@ -105,6 +107,8 @@ const plusBtns = document.querySelectorAll('.counter-wrap .plus');
 if(minusBtns) {
     minusBtns.forEach(el=> {
         el.addEventListener('click' , (e) => {
+            e.stopPropagation();
+            e.preventDefault();
             let currCounter = e.target.closest('.counter-wrap').querySelector('.counter');
             if (currCounter.innerHTML > 0) {
                 currCounter.innerHTML = +currCounter.innerHTML - 1;
@@ -115,6 +119,8 @@ if(minusBtns) {
 if(plusBtns) {
     plusBtns.forEach(el=> {
         el.addEventListener('click' , (e) => {
+            e.stopPropagation();
+            e.preventDefault();
             let currCounter = e.target.closest('.counter-wrap').querySelector('.counter');
             if (currCounter.innerHTML >= 0) {
                 currCounter.innerHTML = +currCounter.innerHTML + 1;
@@ -248,3 +254,101 @@ backBtns.forEach(el=> {
         droprightScreen.classList.remove('active');
     })
 })
+
+
+const thumbsGallery = document.querySelector('.gallery-mini');
+
+if (thumbsGallery) {
+    let swiper4 = new Swiper(".gallery-mini", {
+        spaceBetween: 10,
+        slidesPerView: 4,
+        freeMode: true,
+        direction: "horizontal",
+        navigation: {
+            nextEl: ".gallery-mini-button-next",
+            prevEl: ".gallery-mini-button-prev",
+        },
+        breakpoints: {
+            1200: {
+                slidesPerView: 5,
+                direction: "vertical",
+            }
+        },
+    });
+    let swiper5 = new Swiper(".gallery", {
+        spaceBetween: 10,
+        direction: 'vertical',
+        navigation: {
+            nextEl: ".gallery-button-next",
+            prevEl: ".gallery-button-prev",
+        },
+        thumbs: {
+            swiper: swiper4,
+        },
+    });
+}
+
+// add-to-favorites
+
+const favoritesBtns = document.querySelectorAll('.add-to-favorites');
+
+document.addEventListener('DOMContentLoaded' , ()=> {
+    favoritesBtns?.forEach(el => {
+        if (!el.classList.contains('active')) {
+            let text = el.querySelector('span');
+            text.innerHTML = 'В избранное'
+        } else {
+                el.querySelector('span').innerHTML = 'Удалить'
+        }
+        el.addEventListener('click' , ()=> {
+            if (!el.classList.contains('active')) {
+                el.classList.add('active')
+                let text = el.querySelector('span');
+                text.innerHTML = 'Удалить'
+            } else {
+                el.classList.remove('active')
+                el.querySelector('span').innerHTML = 'В избранное'
+            }
+        })
+
+    })
+})
+
+// compare
+
+const compareBtns = document.querySelectorAll('.compare');
+compareBtns?.forEach(el=> {
+    el.addEventListener('click' , ()=> {
+        el.classList.toggle('active');
+    })
+})
+
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    const tabsBtns = document.querySelectorAll('.tabs-panel li');
+    const cars = document.querySelectorAll('.tab-container .tab-content');
+
+
+    if(tabsBtns){
+        tabsBtns.forEach(function(el){
+            el.addEventListener('click', function(ev){
+                makeActive(ev.target);
+            });
+        });
+    }
+    function makeActive(target){
+        let num = target.dataset.num;
+        let selector = '.tab-container .tab-content[data-num="'+num+'"]';
+        let targetTab = document.querySelector(selector);
+
+        tabsBtns.forEach(function(el){
+            el.classList.remove('active');
+        });
+        cars.forEach(function(el){
+            el.classList.remove('active');
+        });
+        target.classList.add('active');
+        targetTab.classList.add('active');
+    }
+
+});
