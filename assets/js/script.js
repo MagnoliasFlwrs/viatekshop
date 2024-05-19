@@ -393,3 +393,60 @@ if (recentlySwiper) {
     });
 }
 
+const mainSwiper = document.querySelector('.main-banner-swiper')
+
+const mainPageSwiper = new Swiper(mainSwiper, {
+    loop: true,
+    on: {
+        slideNextTransitionEnd: function (swiper) {
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            const previousActiveLink = activeSlide.querySelector(".active");
+            if (previousActiveLink) {
+                previousActiveLink.classList.remove("active");
+            }
+            const paginationBulletSlide = activeSlide.querySelector(`#pagination-bullet-${swiper.realIndex}`);
+            paginationBulletSlide.classList.add("active");
+        },
+        slidePrevTransitionEnd: function (swiper) {
+            const activeSlide = swiper.slides[swiper.activeIndex];
+            const previousActiveLink = activeSlide.querySelector(".active");
+            if (previousActiveLink) {
+                previousActiveLink.classList.remove("active");
+            }
+            const paginationBulletSlide = activeSlide.querySelector(`#pagination-bullet-${swiper.realIndex}`);
+            paginationBulletSlide.classList.add("active");
+        },
+    },
+    navigation: {
+        nextEl: '.main-banner-swiper .slider-btns .custom-swiper-next',
+        prevEl: '.main-banner-swiper .slider-btns .custom-swiper-prev',
+    },
+});
+
+const customPagination = document.querySelectorAll('.custom-pagination');
+const slides = document.querySelectorAll('.swiper-slide.main-banner-slide');
+
+function createPagination() {
+    customPagination.forEach((pagination, pageIndex) => {
+        slides.forEach((slide, i) => {
+            let paginationBullet = document.createElement("div");
+            paginationBullet.classList.add("pagination-bullet");
+            paginationBullet.id = `pagination-bullet-${i}`;
+            if (i === pageIndex) {
+                paginationBullet.classList.add("active");
+            }
+            pagination.appendChild(paginationBullet);
+        });
+    });
+}
+
+createPagination();
+
+customPagination.forEach(el => {
+    let bullets = el.querySelectorAll('.pagination-bullet');
+    bullets.forEach((bull, i) => {
+        bull.addEventListener('click', (e) => {
+            mainPageSwiper.slideTo(i);
+        })
+    })
+})
