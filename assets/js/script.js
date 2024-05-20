@@ -450,3 +450,66 @@ customPagination.forEach(el => {
         })
     })
 })
+
+const reviewSlider = document.querySelector('.review-swiper');
+
+if (reviewSlider) {
+    const swiperReview = new Swiper(reviewSlider, {
+        loop: true,
+        slidesPerView:1,
+        spaceBetween:20,
+        breakpoints: {
+            850 : {
+                slidesPerView: 2,
+                spaceBetween:20
+            },
+            1024 : {
+                slidesPerView: 2,
+                spaceBetween:55
+            }
+        },
+        navigation: {
+            nextEl: '.review-btn-next',
+            prevEl: '.review-btn-prev',
+        },
+    });
+}
+const customerSlider = document.querySelector('.customers-swiper');
+
+if (customerSlider) {
+    const swiperCustomers = new Swiper(customerSlider, {
+        loop: true,
+        slidesPerView:1,
+        spaceBetween:20,
+        breakpoints: {
+            200 : {
+                slidesPerView: 1,
+                spaceBetween:20
+            },
+            550 : {
+                slidesPerView: 2,
+                spaceBetween:20
+            },
+            800 : {
+                slidesPerView: 3,
+                spaceBetween:20
+            },
+            1024 : {
+                slidesPerView: 4,
+                spaceBetween:20
+            },
+            1150 : {
+                slidesPerView: 5,
+                spaceBetween:20
+            },
+            1400 : {
+                slidesPerView: 5,
+                spaceBetween:70
+            }
+        },
+        navigation: {
+            nextEl: '.customers-btn-next',
+            prevEl: '.customers-btn-prev',
+        },
+    });
+}
