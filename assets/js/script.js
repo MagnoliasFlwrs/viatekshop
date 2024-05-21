@@ -325,19 +325,26 @@ compareBtns?.forEach(el=> {
 
 
 window.addEventListener('DOMContentLoaded', (event) => {
-    const tabsBtns = document.querySelectorAll('.tabs-panel li');
+    const tabsBtns = document.querySelectorAll('.tabs-panel li[data-num]');
     const cars = document.querySelectorAll('.tab-container .tab-content');
 
 
     if(tabsBtns){
         tabsBtns.forEach(function(el){
             el.addEventListener('click', function(ev){
+
                 makeActive(ev.target);
             });
         });
     }
     function makeActive(target){
-        let num = target.dataset.num;
+        let newTarget
+        if (target.closest('li')) {
+            newTarget = target.closest('li');
+        } else {
+            newTarget = target
+        }
+        let num = newTarget.dataset.num;
         let selector = '.tab-container .tab-content[data-num="'+num+'"]';
         let targetTab = document.querySelector(selector);
 
@@ -347,7 +354,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         cars.forEach(function(el){
             el.classList.remove('active');
         });
-        target.classList.add('active');
+        newTarget.classList.add('active');
         targetTab.classList.add('active');
     }
 
@@ -513,3 +520,80 @@ if (customerSlider) {
         },
     });
 }
+
+const deliveryTypes = document.querySelectorAll('.type-card');
+
+const clearActiveClass = () => {
+    deliveryTypes?.forEach(el=> {
+        if(el.classList.contains('active')) {
+            el.classList.remove('active')
+        }
+    })
+}
+deliveryTypes?.forEach(el=> {
+    el.addEventListener('click' , ()=> {
+        clearActiveClass()
+        el.classList.toggle('active')
+    })
+})
+
+const paymentlist = document.querySelectorAll('.payment-list li');
+const clearPaymentActiveClass = () => {
+    paymentlist?.forEach(el=> {
+        if(el.classList.contains('active')) {
+            el.classList.remove('active')
+        }
+    })
+}
+paymentlist?.forEach(el=> {
+    el.addEventListener('click' , ()=> {
+        clearPaymentActiveClass()
+        el.classList.toggle('active')
+    })
+})
+
+
+let stars = document.querySelectorAll(".star__item"),
+    starsActive,
+    starsSelect;
+
+stars?.forEach((element, index) => {
+
+    element.addEventListener('mouseover', ()=> {
+        starsActive = Array.prototype.slice.call(stars, 0, index+1);
+        starsActive.forEach((star) => {
+            star.classList.add("star__item_active");
+        });
+    });
+
+    element.addEventListener('mouseout', ()=> {
+        stars.forEach((star) => {
+            star.classList.remove("star__item_active");
+        });
+    });
+
+    element.addEventListener('click', ()=> {
+        stars.forEach((star) => {
+            star.classList.remove("star__item_select");
+        });
+        starsActive.forEach((star) => {
+            star.classList.add("star__item_select");
+        });
+        starsSelect = starsActive;
+    });
+
+});
+
+const reviewModal = document.querySelector('.add-review-modal');
+const addReviewModal = document.querySelectorAll('.add-review');
+
+
+addReviewModal?.forEach(el=> {
+    el.addEventListener('click' , ()=> {
+        overlay.classList.add('open')
+        reviewModal.classList.add('open')
+    })
+})
+overlay.addEventListener('click' , ()=> {
+    reviewModal?.classList.remove('open')
+})
