@@ -597,3 +597,43 @@ addReviewModal?.forEach(el=> {
 overlay.addEventListener('click' , ()=> {
     reviewModal?.classList.remove('open')
 })
+// account-pass
+
+const edit = document.querySelector('.item-value-clicable');
+const pass = document.querySelector('#password-input');
+const icon = document.querySelector('.eye-icon')
+
+edit?.addEventListener('click' , ()=> {
+    if (pass.getAttribute('type')==='password') {
+        pass.setAttribute('type' , 'text');
+        pass.classList.add('active');
+        icon.classList.add('open');
+    } else {
+        pass.setAttribute('type' , 'password');
+        pass.classList.remove('active')
+        icon.classList.remove('open')
+    }
+
+})
+
+const authModalBtns = document.querySelectorAll('.auth-btn');
+const authModal = document.querySelector('.auth-modal');
+const autnCloseBtn = document.querySelector('.close-btn');
+
+const closeAuthModal = () => {
+    autnCloseBtn.addEventListener('click' , ()=> {
+        overlay.classList.remove('open');
+        authModal.classList.remove('open');
+    })
+    overlay.addEventListener('click' , ()=> {
+        overlay.classList.remove('open');
+        authModal.classList.remove('open');
+    })
+}
+authModalBtns?.forEach(el=> {
+    el.addEventListener('click' , ()=> {
+        overlay.classList.add('open');
+        authModal.classList.add('open');
+    })
+})
+closeAuthModal()
