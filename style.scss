@@ -3,6 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root {
+  --brand-color: #19BF84;
+  --header-line-color:#1ABF84;
+  --light-brand-color:#5ED2A9;
+}
 a {
   text-decoration: none;
 }
@@ -69,7 +74,7 @@ body {
 .header {
   .first-line {
     border-radius: 0 0 3px 3px;
-    background: #1ABF84;
+    background: var(--header-line-color);
     .content {
       display: flex;
       justify-content: space-between;
@@ -78,18 +83,21 @@ body {
       .nav-list {
         display: flex;
         align-items: center;
+        height: 70px;
         li {
           position: relative;
+          height: 100%;
           a {
             display: block;
             padding: 20px;
             transition: .3s ease;
+            height: 100%;
             @media (max-width: 1100px) {
               padding: 15px;
             }
 
             &:hover {
-              background: #5ED2A9;
+              background: var(--light-brand-color);
             }
 
             p {
@@ -112,6 +120,7 @@ body {
             display: block;
             padding: 20px;
             transition: .3s ease;
+            height: 100%;
             p {
               display: flex;
               gap: 10px;
@@ -176,7 +185,7 @@ body {
                         line-height: normal;
                         transition: .3s ease;
                         &:hover {
-                          color: #19BF84;
+                          color: var(--brand-color);
                           background: unset;
                         }
                       }
@@ -190,7 +199,7 @@ body {
                           line-height: normal;
                           text-transform: uppercase;
                           &:hover {
-                            color: #19BF84;
+                            color: var(--brand-color);
                             background: unset;
                           }
                         }
@@ -215,9 +224,9 @@ body {
                       transition: .3s ease;
                     }
                     &:hover {
-                      color: #19BF84;
+                      color: var(--brand-color);
                       svg path {
-                        fill: #19BF84;
+                        fill: var(--brand-color);
                       }
                     }
                   }
@@ -226,18 +235,18 @@ body {
               &.active {
                 background: #ffffff;
                 p {
-                  color: #19BF84;
+                  color: var(--brand-color);
                   svg path {
-                    fill: #19BF84;
+                    fill: var(--brand-color);
                   }
                 }
               }
               &:hover {
                 background: #ffffff;
                 p {
-                  color: #19BF84;
+                  color: var(--brand-color);
                   svg path {
-                    fill: #19BF84;
+                    fill: var(--brand-color);
                   }
                 }
               }
@@ -259,7 +268,7 @@ body {
             padding: 20px;
             transition: .3s ease;
             &:hover {
-              background: #5ED2A9;
+              background: var(--light-brand-color);
             }
           }
         }
@@ -418,6 +427,9 @@ body {
         gap: 15px;
       }
       .logo {
+        display: flex;
+        flex-direction: column;
+
         @media  (max-width: 768px) {
           width: 80px;
           height: 40px;
@@ -453,6 +465,7 @@ body {
           align-items: center;
           width: 100%;
           outline: none;
+          height: 44px;
           &::placeholder {
             color: #B7B7B7;
             font-size: 14px;
@@ -479,6 +492,11 @@ body {
     display: flex;
     gap: 10px;
     align-items: center;
+    &.active {
+      &::after {
+        transform: rotate(180deg);
+      }
+    }
     p {
       color: #000;
       text-align: right;
@@ -503,6 +521,7 @@ body {
     &::after {
       content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' viewBox='0 0 24 25' fill='none'%3E%3Cpath d='M12 16.213L5.99001 10.203L7.40301 8.78796L12 13.388L16.596 8.78796L18.01 10.202L12 16.213Z' fill='%2319BF84'/%3E%3C/svg%3E");
       display: block;
+      transition: .3s ease;
     }
 
   }
@@ -515,6 +534,7 @@ body {
     padding: 20px 10px;
     flex-direction: column;
     align-items: center;
+    z-index: 11;
     gap: 10px;
     border-radius: 3px;
     background: #FFF;
@@ -547,14 +567,14 @@ body {
       justify-content: center;
       align-items: center;
       gap: 10px;
-      color: #19BF84;
+      color: var(--brand-color);
       font-family: "Noto Sans";
       font-size: 16px;
       font-style: normal;
       font-weight: 400;
       line-height: normal;
       border-radius: 3px;
-      border: 1px solid #19BF84;
+      border: 1px solid var(--brand-color);
       transition: .3s ease;
       background: transparent;
       @media (max-width: 1024px) {
@@ -563,7 +583,7 @@ body {
 
       &:hover {
         border-radius: 3px;
-        background: #19BF84;
+        background: var(--brand-color);
         color: #FFFFFF;
       }
     }
@@ -589,7 +609,7 @@ body {
         line-height: normal;
         transition: .3s ease;
         &:hover {
-          color: #19BF84;
+          color: var(--brand-color);
         }
         &.disable-breadcrumb {
           color: #B7B7B7;
@@ -619,7 +639,7 @@ body {
   gap: 10px;
   height: 50px;
   border-radius: 3px;
-  border: 1px solid #19BF84;
+  border: 1px solid var(--brand-color);
   transition: .3s ease;
   cursor: pointer;
   @media (max-width: 768px) {
@@ -629,7 +649,7 @@ body {
     transition: .3s ease;
   }
   &:hover {
-    background: #19BF84;
+    background: var(--brand-color);
     svg path {
       stroke: #fff;
     }
@@ -757,7 +777,7 @@ body {
           }
         }
         .news-title{
-          color: #19BF84;
+          color: var(--brand-color);
         }
         .news-image {
           img {
@@ -841,10 +861,10 @@ body {
     }
     &:hover {
       svg path {
-        fill: #19BF84;
+        fill: var(--brand-color);
       }
       span {
-        color: #19BF84;
+        color: var(--brand-color);
       }
     }
   }
@@ -875,7 +895,7 @@ body {
         background: #EBEBEB;
       }
       &.active {
-        background: #19BF84;
+        background: var(--brand-color);
         color: #FFFFFF;
       }
     }
@@ -932,6 +952,12 @@ body {
         @media (max-width: 500px) {
           padding: 0;
         }
+        &:hover {
+          .blog-title {
+            color: var(--brand-color);
+
+          }
+        }
         .blog-title {
           color: #000;
           font-family: "Noto Sans";
@@ -939,6 +965,7 @@ body {
           font-style: normal;
           font-weight: 400;
           line-height: normal;
+          transition: .3s ease;
           @media (max-width: 1024px) {
             font-size: 18px;
           }
@@ -1007,8 +1034,8 @@ body {
         align-items: center;
         gap: 10px;
         border-radius: 3px;
-        border: 1px solid #19BF84;
-        color: #19BF84;
+        border: 1px solid var(--brand-color);
+        color: var(--brand-color);
         font-family: "Noto Sans";
         font-size: 16px;
         font-style: normal;
@@ -1023,7 +1050,7 @@ body {
           overflow: hidden;
         }
         &:hover {
-          background: #19BF84;
+          background: var(--brand-color);
           color: #FFFFFF;
           span {
             width: 24px;
@@ -1230,7 +1257,7 @@ body {
                 }
               }
               &.subtitle {
-                color: #19BF84;
+                color: var(--brand-color);
                 font-family: "Noto Sans";
                 font-size: 25px;
                 font-style: normal;
@@ -1342,7 +1369,7 @@ body {
             }
             &:hover {
               border-radius: 3px;
-              background: #19BF84;
+              background: var(--brand-color);
               svg path {
                 fill: #FFFFFF;
               }
@@ -1565,7 +1592,7 @@ body {
                 }
               }
               &.subtitle {
-                color: #19BF84;
+                color: var(--brand-color);
                 font-family: "Noto Sans";
                 font-size: 25px;
                 font-style: normal;
@@ -1674,7 +1701,7 @@ body {
             }
             &:hover {
               border-radius: 3px;
-              background: #19BF84;
+              background: var(--brand-color);
               svg path {
                 fill: #FFFFFF;
               }
@@ -1778,7 +1805,7 @@ body {
       border: 1px solid #DADADA;
       background: rgba(248, 248, 248, 0.50);
       .manager-title {
-        color: #19BF84;
+        color: var(--brand-color);
       }
       .manager-img {
         img {
@@ -1836,10 +1863,10 @@ body {
       justify-content: center;
       align-items: center;
       border-radius: 3px;
-      border: 1px solid #19BF84;
+      border: 1px solid var(--brand-color);
       cursor: pointer;
       transition: .3s ease;
-      color: #19BF84;
+      color: var(--brand-color);
       font-family: "Noto Sans";
       font-size: 16px;
       font-style: normal;
@@ -1848,8 +1875,8 @@ body {
       background: transparent;
       &:hover {
         border-radius: 3px;
-        border: 1px solid #19BF84;
-        background: #19BF84;
+        border: 1px solid var(--brand-color);
+        background: var(--brand-color);
         color: #FFFFFF;
       }
     }
@@ -1875,7 +1902,7 @@ body {
       border: 1px solid #DADADA;
       background: rgba(248, 248, 248, 0.50);
       .call-request-title {
-        color: #19BF84;
+        color: var(--brand-color);
       }
     }
     .call-request-title{
@@ -1896,10 +1923,10 @@ body {
       align-items: center;
       gap: 20px;
       border-radius: 3px;
-      border: 1px solid #19BF84;
+      border: 1px solid var(--brand-color);
       background: #FFF;
       transition: .3s ease;
-      color: #19BF84;
+      color: var(--brand-color);
       font-family: "Noto Sans";
       font-size: 12px;
       font-style: normal;
@@ -1911,7 +1938,7 @@ body {
         transition: .3s ease;
       }
       &:hover {
-        background:#19BF84 ;
+        background:var(--brand-color) ;
         color: #FFFFFF;
         svg path {
           fill: #FFFFFF;
@@ -2355,7 +2382,7 @@ body {
             flex-shrink: 0;
             margin: 0 3px;
             &.swiper-pagination-bullet-active {
-              background: #19BF84;
+              background: var(--brand-color);
             }
           }
         }
@@ -2510,7 +2537,7 @@ body {
         align-items: center;
         gap: 10px;
         border-radius: 3px;
-        border: 1px solid #19BF84;
+        border: 1px solid var(--brand-color);
         cursor: pointer;
         transition: .3s ease;
         background: transparent;
@@ -2518,7 +2545,7 @@ body {
           transition: .3s ease;
         }
         &:hover {
-          background: #19BF84;
+          background: var(--brand-color);
           svg path {
             fill: #FFFFFF;
           }
@@ -2575,11 +2602,11 @@ body {
   align-items: center;
   align-self: stretch;
   border-radius: 3px;
-  border: 1px solid #19BF84;
+  border: 1px solid var(--brand-color);
   cursor: pointer;
   transition: .3s ease;
   span {
-    color: #19BF84;
+    color: var(--brand-color);
     font-family: "Noto Sans";
     font-size: 16px;
     font-style: normal;
@@ -2588,7 +2615,7 @@ body {
     transition: .3s ease;
   }
   &:hover {
-    background: #19BF84;
+    background: var(--brand-color);
     span {
       color: #FFFFFF;
     }
@@ -2692,7 +2719,7 @@ body {
                 .team-member-info {
                   bottom: 0;
                   .name {
-                    color: #19BF84;
+                    color: var(--brand-color);
                     transition: .3s ease;
                     font-family: "Noto Sans";
                     font-size: 20px;
@@ -2792,7 +2819,7 @@ body {
                     }
                     &:hover {
                       svg path {
-                        fill: #19BF84;
+                        fill: var(--brand-color);
                       }
                     }
                   }
@@ -2924,7 +2951,7 @@ body {
       gap: 20px;
       align-self: stretch;
       border-radius: 3px;
-      border: 1px solid #19BF84;
+      border: 1px solid var(--brand-color);
       background: #FFF;
       transition: .3s ease;
       cursor: pointer;
@@ -2932,7 +2959,7 @@ body {
         transition: .3s ease;
       }
       span {
-        color: #19BF84;
+        color: var(--brand-color);
         transition: .3s ease;
         font-family: "Noto Sans";
         font-size: 12px;
@@ -2942,7 +2969,7 @@ body {
         text-transform: uppercase;
       }
       &:hover {
-        background:#19BF84 ;
+        background:var(--brand-color) ;
         svg path {
           fill: #FFFFFF;
           stroke: #FFFFFF;
@@ -3021,9 +3048,9 @@ body {
         width: fit-content;
         transition: .3s ease;
         &:hover {
-          border: 1px solid #19BF84;
+          border: 1px solid var(--brand-color);
           border-radius: 3px;
-          background: #19BF84;
+          background: var(--brand-color);
         }
         span {
           color: #FFF;
@@ -3132,7 +3159,7 @@ body {
             align-items: center;
             flex-shrink: 0;
             border-radius: 3px;
-            background: #19BF84;
+            background: var(--brand-color);
             color: #FFF;
             font-family: "Noto Sans";
             font-size: 16px;
@@ -3178,7 +3205,7 @@ body {
             align-items: center;
             gap: 10px;
             border-radius: 3px;
-            background: #19BF84;
+            background: var(--brand-color);
             border: none;
             cursor: pointer;
             span {
@@ -3235,7 +3262,7 @@ body {
                 }
                 &.active {
                   svg path {
-                    fill: #19BF84;
+                    fill: var(--brand-color);
                   }
                   span {
                     color: #000;
@@ -3464,7 +3491,7 @@ body {
       gap: 10px;
       align-self: stretch;
       border-radius: 3px;
-      border: 1px solid #19BF84;
+      border: 1px solid var(--brand-color);
       cursor: pointer;
       transition: .3s ease;
       background: transparent;
@@ -3478,7 +3505,7 @@ body {
         transition: .3s ease;
       }
       &:hover {
-        background: #19BF84;
+        background: var(--brand-color);
         svg path {
           fill: #FFFFFF;
         }
@@ -3770,6 +3797,8 @@ body {
             border: 1px solid #B7B7B7;
             transition: .3s ease;
             cursor: pointer;
+            background: transparent;
+            width: 136px;
 
             svg path {
               transition: .3s ease;
@@ -3783,21 +3812,23 @@ body {
               line-height: normal;
               text-transform: uppercase;
               transition: .3s ease;
+              white-space: nowrap;
             }
             &:hover {
               border-radius: 3px;
-              border: 1px solid #19BF84;
+              border: 1px solid var(--brand-color);
               span {
-                color: #19BF84;
+                color: var(--brand-color);
               }
               svg path {
-                fill: #19BF84;
+                fill: var(--brand-color);
               }
             }
             &.active {
+              width: 111px;
               border-radius: 3px;
-              background: #19BF84;
-              border: 1px solid #19BF84;
+              background: var(--brand-color);
+              border: 1px solid var(--brand-color);
               span {
                 color: #fff;
               }
@@ -3821,6 +3852,7 @@ body {
             border: 1px solid #B7B7B7;
             transition: .3s ease;
             cursor: pointer;
+            background: transparent;
 
             svg rect {
               transition: .3s ease;
@@ -3841,18 +3873,19 @@ body {
             }
             &:hover {
               border-radius: 3px;
-              border: 1px solid #19BF84;
+              border: 1px solid var(--brand-color);
               span {
-                color: #19BF84;
+                color: var(--brand-color);
               }
               svg path {
-                fill: #19BF84;
+                fill: var(--brand-color);
               }
             }
             &.active {
+              transition: .3s ease;
               border-radius: 3px;
-              background: #19BF84;
-              border: 1px solid #19BF84;
+              background: var(--brand-color);
+              border: 1px solid var(--brand-color);
               span {
                 color: #fff;
               }
@@ -3927,7 +3960,7 @@ body {
             gap: 10px;
             flex: 1 0 0;
             border-radius: 3px;
-            border: 1px solid #19BF84;
+            border: 1px solid var(--brand-color);
             cursor: pointer;
             transition: .3s ease;
             background: transparent;
@@ -3944,7 +3977,7 @@ body {
               line-height: normal;
             }
             &:hover {
-              background:#19BF84 ;
+              background:var(--brand-color) ;
               svg path {
                 fill: #FFFFFF;
               }
@@ -4049,8 +4082,8 @@ body {
             border-radius: 3px;
             border: 1px solid #F5F5F5;
             background: #FFF;
-            box-shadow: 0px 2px 0px 0px #19BF84 inset;
-            color: #19BF84;
+            box-shadow: 0px 2px 0px 0px var(--brand-color) inset;
+            color: var(--brand-color);
           }
           &:hover {
             box-shadow: 0px 2px 0px 0px transparent inset;
@@ -4217,7 +4250,7 @@ body {
                 justify-content: center;
                 align-items: center;
                 border-radius: 3px;
-                background: #19BF84;
+                background: var(--brand-color);
                 color: #FFF;
                 font-family: "Noto Sans";
                 font-size: 16px;
@@ -4371,7 +4404,7 @@ body {
                 align-items: flex-start;
                 span {
                   border-radius: 3px;
-                  background: #19BF84;
+                  background: var(--brand-color);
                   display: flex;
                   padding: 3px 10px;
                   flex-direction: column;
@@ -4573,6 +4606,9 @@ body {
               display: flex;
               align-items: center;
               justify-content: center;
+              transition: .3s ease;
+              cursor: pointer;
+              
 
               @media (max-width: 768px) {
                 width: calc((100% - 30px) / 2);
@@ -4620,7 +4656,6 @@ body {
                 background: #FFFFFF;
                 opacity: 0;
                 transition: .3s ease;
-                display: none;
                 span {
                   color: #000;
                   font-family: "Noto Sans";
@@ -4846,7 +4881,7 @@ body {
                   padding: 5px 10px;
                   align-items: center;
                   gap: 10px;
-                  color: #19BF84;
+                  color: var(--brand-color);
                   font-family: "Noto Sans";
                   font-size: 12px;
                   font-style: normal;
@@ -4950,7 +4985,7 @@ body {
                 gap: 10px;
                 cursor: pointer;
                 span {
-                  color: #19BF84;
+                  color: var(--brand-color);
                   font-family: "Noto Sans";
                   font-size: 12px;
                   font-style: normal;
@@ -5019,7 +5054,7 @@ body {
             align-self: stretch;
             border: 1px solid #EBEBEB;
             .title {
-              color: #19BF84;
+              color: var(--brand-color);
               font-family: "Noto Sans";
               font-size: 25px;
               font-style: normal;
@@ -5116,7 +5151,7 @@ body {
       }
       &:hover {
         border-radius: 3px;
-        background: #19BF84;
+        background: var(--brand-color);
         svg path {
           fill: #FFFFFF;
         }
@@ -5150,7 +5185,7 @@ body {
           align-items: center;
           gap: 10px;
           border-radius: 3px;
-          background: #19BF84;
+          background: var(--brand-color);
           border: none;
           cursor: pointer;
           span {
@@ -5207,7 +5242,7 @@ body {
               }
               &.active {
                 svg path {
-                  fill: #19BF84;
+                  fill: var(--brand-color);
                 }
                 span {
                   color: #000;
@@ -5326,7 +5361,7 @@ body {
             align-items: center;
             flex-shrink: 0;
             border-radius: 3px;
-            background: #19BF84;
+            background: var(--brand-color);
             color: #FFF;
             font-family: "Noto Sans";
             font-size: 16px;
@@ -5455,7 +5490,7 @@ body {
               justify-content: center;
               align-items: center;
               border-radius: 3px;
-              background: #19BF84;
+              background: var(--brand-color);
               color: #FFF;
               font-family: "Noto Sans";
               font-size: 16px;
@@ -5514,7 +5549,7 @@ body {
     transition: .4s;
   }
   input:checked + .slider {
-    background-color: #EBEBEB;
+    background-color: var(--brand-color);
   }
 
   input:focus + .slider {
@@ -5544,7 +5579,7 @@ body {
     }
 
     a {
-      color: #19BF84;
+      color: var(--brand-color);
       font-family: "Noto Sans";
       font-size: 12px;
       font-style: normal;
@@ -5562,13 +5597,13 @@ body {
     width: 100%;
     height: 550px;
     background: rgba(54, 94, 220, 0.05);
+    position: relative;
     @media (max-width: 1024px) {
       height: 442px;
     }
     .banner-wrapper {
       width:100%;
       height: 100%;
-      position: relative;
       img {
         width: 100%;
         height: 100%;
@@ -5628,7 +5663,7 @@ body {
           justify-content: center;
           align-items: center;
           border-radius: 3px;
-          background: #19BF84;
+          background: var(--brand-color);
           color: #FFF;
           font-family: "Noto Sans";
           font-size: 16px;
@@ -5639,70 +5674,74 @@ body {
           transition: .3s ease;
           border: none;
           &:hover {
-            background: #5ED2A9;
+            background: var(--light-brand-color);
           }
         }
       }
-      .slider-nav {
-        padding: 30px;
-        position: absolute;
-        left: 0;
-        bottom: 0;
+
+    }
+    .slider-nav {
+      padding: 30px;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: flex;
+      gap: 20px;
+      justify-content: flex-end;
+      z-index: 15;
+      .slider-btns {
         display: flex;
         gap: 20px;
-        justify-content: flex-end;
-        .slider-btns {
+        .custom-swiper-prev , .custom-swiper-next {
+          border-radius: 3px;
+          background: rgba(255, 255, 255, 0.50);
           display: flex;
-          gap: 20px;
-          .custom-swiper-prev , .custom-swiper-next {
-            border-radius: 3px;
-            background: rgba(255, 255, 255, 0.50);
-            display: flex;
-            width: 57px;
-            height: 57px;
-            padding: 17px 17px 16px 16px;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
-            cursor: pointer;
+          width: 57px;
+          height: 57px;
+          padding: 17px 17px 16px 16px;
+          justify-content: center;
+          align-items: center;
+          flex-shrink: 0;
+          cursor: pointer;
+          transition: .3s ease;
+
+          svg path {
             transition: .3s ease;
+          }
 
+          &:hover {
+            border-radius: 3px;
+            background: var(--brand-color);
             svg path {
-              transition: .3s ease;
-            }
-
-            &:hover {
-              border-radius: 3px;
-              background: #19BF84;
-              svg path {
-                fill: #FFFFFF;
-              }
+              fill: #FFFFFF;
             }
           }
         }
-        .pagination {
-          display: flex;
-          gap: 10px;
-          padding: 0;
-          margin: 0;
-          align-items: flex-end;
-          .pagination-bullet {
-            display: flex;
-            width: 20px;
-            height: 20px;
-            justify-content: center;
-            align-items: center;
-            flex-shrink: 0;
-            border: 2px solid #19BF84;
-            border-radius: 5px;
-            cursor: pointer;
-            &.active {
-              background-color: #19BF84 !important;
-            }
-          }
-        }
-
       }
+      .pagination {
+        display: flex;
+        gap: 10px;
+        padding: 0;
+        margin: 0;
+        align-items: flex-end;
+        .swiper-pagination-bullet {
+          display: flex;
+          width: 20px;
+          height: 20px;
+          justify-content: center;
+          align-items: center;
+          flex-shrink: 0;
+          border: 2px solid var(--brand-color);
+          border-radius: 5px;
+          cursor: pointer;
+          background: transparent;
+          opacity: 1;
+          &.swiper-pagination-bullet-active {
+            background-color: var(--brand-color) !important;
+          }
+        }
+      }
+
     }
   }
 }
@@ -5800,7 +5839,7 @@ body {
         align-items: center;
         gap: 10px;
         border-radius: 3px;
-        background: #19BF84;
+        background: var(--brand-color);
         color: #fff;
         font-family: "Noto Sans";
         font-size: 16px;
@@ -5817,7 +5856,7 @@ body {
           overflow: hidden;
         }
         &:hover {
-          background: #5ED2A9;
+          background: var(--light-brand-color);
           color: #FFFFFF;
           span {
             width: 24px;
@@ -6071,12 +6110,12 @@ body {
         align-items: center;
         gap: 10px;
         border-radius: 3px;
-        background: #19BF84;
+        background: var(--brand-color);
         width: fit-content;
         transition: .3s ease;
         &:hover {
           border-radius: 3px;
-          background: #5ED2A9;
+          background: var(--light-brand-color);
         }
         span {
           color: #FFF;
@@ -6127,8 +6166,8 @@ body {
             align-items: center;
             gap: 10px;
             border-radius: 3px;
-            border: 1px solid #19BF84;
-            color: #19BF84;
+            border: 1px solid var(--brand-color);
+            color: var(--brand-color);
             font-family: "Noto Sans";
             font-size: 16px;
             font-style: normal;
@@ -6143,7 +6182,7 @@ body {
               overflow: hidden;
             }
             &:hover {
-              background: #19BF84;
+              background: var(--brand-color);
               color: #FFFFFF;
               span {
                 width: 24px;
@@ -6253,9 +6292,20 @@ body {
         align-items: center;
         flex-shrink: 0;
         cursor: pointer;
+        background: #FFF;
+        transition: .3s ease;
+        svg path {
+          transition: .3s ease;
+        }
         @media (max-width: 1024px) {
           width: 40px;
           height: 40px;
+        }
+        &:hover {
+          background: var(--brand-color);
+          svg path {
+            fill: #FFFFFF;
+          }
         }
       }
       .review-swiper {
@@ -6326,8 +6376,8 @@ body {
             justify-content: center;
             align-items: center;
             border-radius: 3px;
-            border: 1px solid #19BF84;
-            color: #19BF84;
+            border: 1px solid var(--brand-color);
+            color: var(--brand-color);
             font-family: "Noto Sans";
             font-size: 16px;
             font-style: normal;
@@ -6337,7 +6387,7 @@ body {
 
             &:hover {
               border-radius: 3px;
-              background: #5ED2A9;
+              background: var(--light-brand-color);
               color: #FFFFFF;
             }
           }
@@ -6368,9 +6418,19 @@ body {
         flex-shrink: 0;
         border-radius: 3px;
         background: #FFF;
+        transition: .3s ease;
+        svg path {
+          transition: .3s ease;
+        }
         @media (max-width: 1024px) {
           width: 40px;
           height: 40px;
+        }
+        &:hover {
+          background: var(--brand-color);
+          svg path {
+            fill: #FFFFFF;
+          }
         }
       }
       .customers-swiper {
@@ -6509,8 +6569,8 @@ body {
           align-items: center;
           align-self: stretch;
           border-radius: 3px;
-          border: 1px solid #19BF84;
-          color: #19BF84;
+          border: 1px solid var(--brand-color);
+          color: var(--brand-color);
           font-family: "Noto Sans";
           font-size: 16px;
           font-style: normal;
@@ -6519,7 +6579,7 @@ body {
           cursor: pointer;
           transition: .3s ease;
           &:hover {
-            background: #19BF84;
+            background: var(--brand-color);
             color: #FFFFFF;
           }
         }
@@ -6530,7 +6590,7 @@ body {
           align-items: center;
           align-self: stretch;
           border-radius: 3px;
-          background: #19BF84;
+          background: var(--brand-color);
           color: #FFF;
           font-family: "Noto Sans";
           font-size: 16px;
@@ -6793,8 +6853,8 @@ body {
           align-items: center;
           align-self: stretch;
           border-radius: 3px;
-          border: 1px solid #19BF84;
-          color: #19BF84;
+          border: 1px solid var(--brand-color);
+          color: var(--brand-color);
           font-family: "Noto Sans";
           font-size: 16px;
           font-style: normal;
@@ -6803,7 +6863,7 @@ body {
           cursor: pointer;
           transition: .3s ease;
           &:hover {
-            background: #19BF84;
+            background: var(--brand-color);
             color: #FFFFFF;
           }
         }
@@ -6814,7 +6874,7 @@ body {
           align-items: center;
           align-self: stretch;
           border-radius: 3px;
-          background: #19BF84;
+          background: var(--brand-color);
           color: #FFF;
           font-family: "Noto Sans";
           font-size: 16px;
@@ -6913,7 +6973,7 @@ body {
             justify-content: center;
             align-items: center;
             border-radius: 3px;
-            background: #19BF84;
+            background: var(--brand-color);
             cursor: pointer;
             border: none;
             transition: .3s ease;
@@ -6926,7 +6986,7 @@ body {
             margin-left: auto;
             &:hover {
               border-radius: 3px;
-              background: #5ED2A9;
+              background: var(--light-brand-color);
             }
           }
         }
@@ -6976,8 +7036,8 @@ body {
               }
               &.active {
                 border-radius: 3px;
-                border: 1px solid #19BF84;
-                background: #19BF84;
+                border: 1px solid var(--brand-color);
+                background: var(--brand-color);
                 svg path {
                   stroke: #FFFFFF;
                 }
@@ -7116,7 +7176,7 @@ body {
               justify-content: center;
               align-items: center;
               border-radius: 3px;
-              background: #19BF84;
+              background: var(--brand-color);
               cursor: pointer;
               border: none;
               transition: .3s ease;
@@ -7128,7 +7188,7 @@ body {
               line-height: normal;
               &:hover {
                 border-radius: 3px;
-                background: #5ED2A9;
+                background: var(--light-brand-color);
               }
             }
             .textarea-container {
@@ -7250,8 +7310,8 @@ body {
               }
               &.active {
                 border-radius: 3px;
-                border: 1px solid #19BF84;
-                color: #19BF84;
+                border: 1px solid var(--brand-color);
+                color: var(--brand-color);
                 font-family: "Noto Sans";
                 font-size: 18px;
                 font-style: normal;
@@ -7268,7 +7328,7 @@ body {
             justify-content: center;
             align-items: center;
             border-radius: 3px;
-            background: #19BF84;
+            background: var(--brand-color);
             cursor: pointer;
             border: none;
             transition: .3s ease;
@@ -7281,7 +7341,7 @@ body {
             margin-left: auto;
             &:hover {
               border-radius: 3px;
-              background: #5ED2A9;
+              background: var(--light-brand-color);
             }
           }
         }
@@ -7467,14 +7527,14 @@ body {
                 gap: 20px;
                 border-radius: 3px;
                 background: transparent;
-                border: 1px solid #19BF84;
+                border: 1px solid var(--brand-color);
                 transition: .3s ease;
                 cursor: pointer;
                 svg path {
                   transition: .3s ease;
                 }
                 span {
-                  color: #19BF84;
+                  color: var(--brand-color);
                   font-family: "Noto Sans";
                   font-size: 16px;
                   font-style: normal;
@@ -7484,8 +7544,8 @@ body {
                 }
                 &:hover {
                   border-radius: 3px;
-                  border: 1px solid #19BF84;
-                  background: #19BF84;
+                  border: 1px solid var(--brand-color);
+                  background: var(--brand-color);
                   svg path {
                     fill: #FFFFFF;
                   }
@@ -7658,7 +7718,7 @@ body {
                   }
                   &.purchased {
                     border-radius: 3px;
-                    background: #19BF84;
+                    background: var(--brand-color);
                   }
                   &.canceled {
                     border-radius: 3px;
@@ -7672,8 +7732,8 @@ body {
                   justify-content: center;
                   align-items: center;
                   border-radius: 3px;
-                  border: 1px solid #19BF84;
-                  color: #19BF84;
+                  border: 1px solid var(--brand-color);
+                  color: var(--brand-color);
                   font-family: "Noto Sans";
                   font-size: 16px;
                   font-style: normal;
@@ -7684,7 +7744,7 @@ body {
                   background: transparent;
                   white-space: nowrap;
                   &:hover {
-                    background: #19BF84;
+                    background: var(--brand-color);
                     color: #FFFFFF;
                   }
                 }
@@ -7762,14 +7822,14 @@ body {
           justify-content: center;
           align-items: center;
           border-radius: 3px;
-          background: #19BF84;
+          background: var(--brand-color);
           transition: .3s ease;
           cursor: pointer;
           border: none;
           width: fit-content;
           &:hover {
             border-radius: 3px;
-            background: #5ED2A9;
+            background: var(--light-brand-color);
           }
         }
         .reviews-cards {
@@ -7860,7 +7920,7 @@ body {
                     gap: 4px;
                     &:hover {
                       a {
-                        color: #19BF84;
+                        color: var(--brand-color);
                       }
                     }
                     a {
@@ -7895,7 +7955,7 @@ body {
               gap: 30px;
               align-self: stretch;
               background: #F9F9F9;
-              box-shadow: 2px 0px 0px 0px #19BF84 inset;
+              box-shadow: 2px 0px 0px 0px var(--brand-color) inset;
               @media (max-width: 768px) {
                 flex-direction: column;
               }
@@ -8083,7 +8143,7 @@ body {
     align-items: center;
     gap: 20px;
     border-radius: 3px;
-    border: 1px solid #19BF84;
+    border: 1px solid var(--brand-color);
     position: relative;
     background: transparent;
     transition: .3s ease;
@@ -8092,7 +8152,7 @@ body {
       transition: .3s ease;
     }
     &:hover {
-      background: #19BF84;
+      background: var(--brand-color);
       .selectbutton {
         color: #FFFFFF;
       }
@@ -8101,7 +8161,7 @@ body {
       }
     }
     .selectbutton {
-      color: #19BF84;
+      color: var(--brand-color);
       font-family: "Noto Sans";
       font-size: 12px;
       font-style: normal;
@@ -8140,8 +8200,8 @@ body {
       justify-content: center;
       align-items: center;
       border-radius: 3px;
-      border: 1px solid #19BF84;
-      color: #19BF84;
+      border: 1px solid var(--brand-color);
+      color: var(--brand-color);
       font-family: "Noto Sans";
       font-size: 16px;
       font-style: normal;
@@ -8151,7 +8211,7 @@ body {
       transition: .3s ease;
       background: transparent;
       &:hover {
-        background: #19BF84;
+        background: var(--brand-color);
         color: #fff;
       }
     }
@@ -8299,7 +8359,7 @@ body {
           align-items: center;
           flex: 1 0 0;
           border-radius: 3px;
-          background: #19BF84;
+          background: var(--brand-color);
           color: #FFF;
           font-family: "Noto Sans";
           font-size: 16px;
@@ -8310,7 +8370,7 @@ body {
           transition: .3s ease;
           border: none;
           &:hover {
-            background: #5ED2A9;
+            background: var(--light-brand-color);
           }
         }
 
@@ -8327,7 +8387,7 @@ body {
         align-items: center;
         a {
           &:first-child {
-            color: #19BF84;
+            color: var(--brand-color);
             font-family: "Noto Sans";
             font-size: 12px;
             font-style: normal;
@@ -8343,8 +8403,8 @@ body {
             justify-content: center;
             align-items: center;
             border-radius: 3px;
-            border: 1px solid #19BF84;
-            color: #19BF84;
+            border: 1px solid var(--brand-color);
+            color: var(--brand-color);
             font-family: "Noto Sans";
             font-size: 16px;
             font-style: normal;
@@ -8354,7 +8414,7 @@ body {
 
             &:hover {
               color: #FFFFFF;
-              background:#19BF84 ;
+              background:var(--brand-color) ;
             }
           }
         }
@@ -8500,7 +8560,7 @@ body {
           align-items: center;
           flex: 1 0 0;
           border-radius: 3px;
-          background: #19BF84;
+          background: var(--brand-color);
           color: #FFF;
           font-family: "Noto Sans";
           font-size: 16px;
@@ -8511,7 +8571,7 @@ body {
           transition: .3s ease;
           border: none;
           &:hover {
-            background: #5ED2A9;
+            background: var(--light-brand-color);
           }
           @media (max-width: 768px) {
             width: 100%;
@@ -8536,7 +8596,7 @@ body {
         }
         a {
           &:first-child {
-            color: #19BF84;
+            color: var(--brand-color);
             font-family: "Noto Sans";
             font-size: 12px;
             font-style: normal;
@@ -8552,8 +8612,8 @@ body {
             justify-content: center;
             align-items: center;
             border-radius: 3px;
-            border: 1px solid #19BF84;
-            color: #19BF84;
+            border: 1px solid var(--brand-color);
+            color: var(--brand-color);
             font-family: "Noto Sans";
             font-size: 16px;
             font-style: normal;
@@ -8563,7 +8623,7 @@ body {
 
             &:hover {
               color: #FFFFFF;
-              background:#19BF84 ;
+              background:var(--brand-color) ;
             }
           }
         }
