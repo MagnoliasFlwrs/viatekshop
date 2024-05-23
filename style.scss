@@ -262,8 +262,11 @@ body {
       .btn-list {
         display: flex;
         align-items: center;
+        height: 70px;
         li {
+          height: 70px;
           a {
+            height: 70px;
             display: block;
             padding: 20px;
             transition: .3s ease;
